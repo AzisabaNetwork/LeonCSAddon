@@ -17,9 +17,13 @@ public class CustomProjectileSizeListener implements Listener {
         WeaponConfigData data = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(e.getWeaponTitle());
         if(e.getProjectile() != null && data != null){
             EntityProjectile pj = ((CraftProjectile)e.getProjectile()).getHandle();
-            Field f = pj.getClass().getDeclaredField("size");
-            f.setAccessible(true);
-            f.set(pj, new EntitySize((float)data.projectileSizeXZ, (float)data.projectileSizeY, false));
+            try {
+                Field f = pj.getClass().getDeclaredField("size");
+                f.setAccessible(true);
+                f.set(pj, new EntitySize((float) data.projectileSizeXZ, (float) data.projectileSizeY, false));
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
         }
     }
 
