@@ -25,7 +25,7 @@ jobs:
 
     - name: Check 1.15.2 NMS existence
       id: check_nms
-      uses: andstor/file-existence-action@v1
+      uses: andstor/file-existence-action@v3
       with:
         files: "/home/runner/.m2/repository/org/spigotmc/spigot/1.15.2-R0.1-SNAPSHOT/spigot-1.15.2-R0.1-SNAPSHOT.pom"
     - name: Download BuildTools
@@ -37,7 +37,7 @@ jobs:
 
     - name: Check CrackShot existence
       id: check_crackshot
-      uses: andstor/file-existence-action@v1
+      uses: andstor/file-existence-action@v3
       with:
         files: "/home/runner/.m2/repository/com/shampaggon/CrackShot/0.98.11/CrackShot-0.98.11.pom"
     - name: Download CrackShot v0.98.11
