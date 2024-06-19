@@ -33,7 +33,7 @@ jobs:
       run: mkdir -p ./build/ && curl -L -o ./build/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
     - name: Run BuildTools
       if: steps.check_nms.outputs.files_exists == 'false'
-      run: cd build && java -jar BuildTools.jar --rev 1.12.2
+      run: cd build && java -jar BuildTools.jar --rev 1.15.2
 
     - name: Check CrackShot existence
       id: check_crackshot
