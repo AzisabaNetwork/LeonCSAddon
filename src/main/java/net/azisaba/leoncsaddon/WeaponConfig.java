@@ -74,16 +74,4 @@ public class WeaponConfig extends Config{
 
     }
 
-    public List<String> getWeaponTitles(String dataName){
-        ArrayList<String> list = new ArrayList<>();
-        weaponsMap.forEach((key, value) -> {
-            if(key.equals(dataName)){
-                list.add(key);
-            }
-            if(value.getDataName().equals(dataName)){
-                list.add(key);
-            }
-        });
-        return list;
-    }
 }

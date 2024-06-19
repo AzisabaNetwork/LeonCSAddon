@@ -8,6 +8,8 @@ import org.bukkit.craftbukkit.v1_15_R1.entity.CraftProjectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import java.lang.reflect.Field;
+
 public class CustomProjectileSizeListener implements Listener {
 
     @EventHandler

@@ -36,11 +36,6 @@ public class Config {
             exception.printStackTrace();
         }
 
-        if(config == null){
-            ErrorCode.C0001.log();
-            return;
-        }
-
     }
 
     public void load(){}

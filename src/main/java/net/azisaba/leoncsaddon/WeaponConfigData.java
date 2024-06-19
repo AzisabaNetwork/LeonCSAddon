@@ -1,5 +1,7 @@
 package net.azisaba.leoncsaddon;
 
+import java.util.List;
+
 public class WeaponConfigData {
 
     public final String name;
