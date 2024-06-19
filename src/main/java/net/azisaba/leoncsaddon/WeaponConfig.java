@@ -86,4 +86,10 @@ public class WeaponConfig extends Config{
         });
         return list;
     }
+
+    public void refreshCache(){
+
+        cache.clear();
+
+    }
 }
