@@ -67,5 +67,17 @@
           <version>1.15.2-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
       </dependency>
+      <dependency>
+          <groupId>org.spigotmc</groupId>
+          <artifactId>spigot</artifactId>
+          <version>1.15.2-R0.1-SNAPSHOT</version>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.shampaggon</groupId>
+          <artifactId>CrackShot</artifactId>
+          <version>0.98.11</version>
+          <scope>provided</scope>
+      </dependency>
   </dependencies>
 </project>
