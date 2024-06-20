@@ -23,7 +23,7 @@ public class CustomProjectileSizeListener implements Listener {
                 Field f = clazz.getDeclaredField("size");
                 f.setAccessible(true);
                 f.set(pj, new EntitySize((float) data.projectileSizeXZ, (float) data.projectileSizeY, false));
-                e.getPlayer().sendMessage(pj.getHeight() + "");
+                pj.setPosition(pj.locX(), pj.locY(), pj.locZ());
             }catch (Exception ex){
                 ex.printStackTrace();
             }
