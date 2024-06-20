@@ -19,7 +19,8 @@ public class CustomProjectileSizeListener implements Listener {
         if(e.getProjectile() != null && data != null){
             Entity pj = ((CraftEntity)e.getProjectile()).getHandle();
             try {
-                Field f = pj.getClass().getDeclaredField("size");
+                Class<Entity> clazz = Entity.class;
+                Field f = clazz.getDeclaredField("size");
                 f.setAccessible(true);
                 f.set(pj, new EntitySize((float) data.projectileSizeXZ, (float) data.projectileSizeY, false));
             }catch (Exception ex){
