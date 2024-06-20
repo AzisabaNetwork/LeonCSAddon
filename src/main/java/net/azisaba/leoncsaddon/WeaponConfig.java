@@ -50,8 +50,8 @@ public class WeaponConfig extends Config{
                         int reduceStartTick = configuration.getInt(key + ".reduceStartTick",0);
                         int reduceEndTick = configuration.getInt(key + ".reduceEndTick",0);
                         double reduceDamage = configuration.getDouble(key + ".reduceDamage",0);
-                        double projectileSizeXZ = configuration.getDouble(key + ".projectileSize.xz",1.5);
-                        double projectileSizeY = configuration.getDouble(key + ".projectileSize.y",1.5);
+                        double projectileSizeXZ = configuration.getDouble(key + ".projectileSize.xz",0);
+                        double projectileSizeY = configuration.getDouble(key + ".projectileSize.y",0);
 
                         weaponsMap.put(key,new WeaponConfigData(key, type, isMain, damage, headshotBonusDamage, criticalBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY));
 
