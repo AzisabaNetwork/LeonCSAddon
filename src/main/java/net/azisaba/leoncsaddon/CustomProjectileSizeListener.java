@@ -1,6 +1,7 @@
 package net.azisaba.leoncsaddon;
 
 import com.shampaggon.crackshot.events.WeaponShootEvent;
+import net.minecraft.server.v1_15_R1.Entity;
 import net.minecraft.server.v1_15_R1.EntityProjectile;
 import net.minecraft.server.v1_15_R1.EntitySize;
 import org.bukkit.craftbukkit.v1_15_R1.entity.CraftEntity;
@@ -16,7 +17,7 @@ public class CustomProjectileSizeListener implements Listener {
     public void onShoot(WeaponShootEvent e){
         WeaponConfigData data = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(e.getWeaponTitle());
         if(e.getProjectile() != null && data != null){
-            EntityProjectile pj = ((CraftProjectile)e.getProjectile()).getHandle();
+            Entity pj = ((CraftEntity)e.getProjectile()).getHandle();
             try {
                 Field f = pj.getClass().getDeclaredField("size");
                 f.setAccessible(true);
