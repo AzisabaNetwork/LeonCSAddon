@@ -1,11 +1,13 @@
 package net.azisaba.leoncsaddon;
 
+import com.shampaggon.crackshot.events.WeaponDamageEntityEvent;
 import com.shampaggon.crackshot.events.WeaponShootEvent;
 import net.minecraft.server.v1_15_R1.Entity;
 import net.minecraft.server.v1_15_R1.EntityProjectile;
 import net.minecraft.server.v1_15_R1.EntitySize;
 import org.bukkit.craftbukkit.v1_15_R1.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_15_R1.entity.CraftProjectile;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
@@ -24,9 +26,17 @@ public class CustomProjectileSizeListener implements Listener {
                 f.setAccessible(true);
                 f.set(pj, new EntitySize((float) data.projectileSizeXZ - 1.0f, (float) data.projectileSizeY - 1.0f, false));
                 pj.setPosition(pj.locX(), pj.locY(), pj.locZ());
+                e.getPlayer().sendMessage(pj.getBoundingBox().toString());
             }catch (Exception ex){
                 ex.printStackTrace();
             }
+        }
+    }
+
+    @EventHandler
+    public void onDamage(WeaponDamageEntityEvent e){
+        if(e.getDamager() instanceof Projectile){
+            e.getPlayer().sendMessage(((CraftProjectile)e.getDamager()).getHandle().getBoundingBox().toString());
         }
     }
 
