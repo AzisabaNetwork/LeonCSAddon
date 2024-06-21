@@ -2,6 +2,7 @@ package net.azisaba.leoncsaddon;
 
 import com.shampaggon.crackshot.events.WeaponDamageEntityEvent;
 import com.shampaggon.crackshot.events.WeaponShootEvent;
+import net.minecraft.server.v1_15_R1.AxisAlignedBB;
 import net.minecraft.server.v1_15_R1.Entity;
 import net.minecraft.server.v1_15_R1.EntityProjectile;
 import net.minecraft.server.v1_15_R1.EntitySize;
@@ -25,7 +26,8 @@ public class CustomProjectileSizeListener implements Listener {
                 Field f = clazz.getDeclaredField("size");
                 f.setAccessible(true);
                 f.set(pj, new EntitySize((float) data.projectileSizeXZ, (float) data.projectileSizeY, true));
-                pj.setPosition(pj.locX(), pj.locY(), pj.locZ());
+                double d0 = data.projectileSizeXZ / 2.0D;
+                pj.a(new AxisAlignedBB(pj.locX() - d0, pj.locY(), pj.locZ() - d0, pj.locX() + d0, pj.locY() + data.projectileSizeY, pj.locZ() + d0));
                 e.getPlayer().sendMessage(pj.getBoundingBox().toString());
             }catch (Exception ex){
                 ex.printStackTrace();
