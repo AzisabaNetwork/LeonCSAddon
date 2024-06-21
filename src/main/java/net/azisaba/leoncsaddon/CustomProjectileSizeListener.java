@@ -35,4 +35,13 @@ public class CustomProjectileSizeListener implements Listener {
         }
     }
 
+    @EventHandler
+    public void onDamage(WeaponDamageEntityEvent e){
+        if(e.getDamager() instanceof Projectile){
+            Projectile pj = (Projectile) e.getDamager();
+            EntityProjectile ep = ((CraftProjectile)pj).getHandle();
+            e.getPlayer().sendMessage(ep.getBoundingBox().toString());
+        }
+    }
+
 }
