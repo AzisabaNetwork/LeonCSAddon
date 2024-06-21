@@ -22,7 +22,7 @@ public class CustomProjectileSizeListener implements Listener {
                 Class<Entity> clazz = Entity.class;
                 Field f = clazz.getDeclaredField("size");
                 f.setAccessible(true);
-                f.set(pj, new EntitySize((float) data.projectileSizeXZ, (float) data.projectileSizeY, false));
+                f.set(pj, new EntitySize((float) data.projectileSizeXZ - 1.0f, (float) data.projectileSizeY - 1.0f, false));
                 pj.setPosition(pj.locX(), pj.locY(), pj.locZ());
             }catch (Exception ex){
                 ex.printStackTrace();
