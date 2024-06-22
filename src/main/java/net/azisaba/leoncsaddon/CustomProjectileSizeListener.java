@@ -28,19 +28,9 @@ public class CustomProjectileSizeListener implements Listener {
                 f.set(pj, new EntitySize((float) data.projectileSizeXZ, (float) data.projectileSizeY, true));
                 double d0 = data.projectileSizeXZ / 2.0D;
                 pj.a(new AxisAlignedBB(pj.locX() - d0, pj.locY(), pj.locZ() - d0, pj.locX() + d0, pj.locY() + data.projectileSizeY, pj.locZ() + d0));
-                e.getPlayer().sendMessage(pj.getBoundingBox().toString());
             }catch (Exception ex){
                 ex.printStackTrace();
             }
-        }
-    }
-
-    @EventHandler
-    public void onDamage(WeaponDamageEntityEvent e){
-        if(e.getDamager() instanceof Projectile){
-            Projectile pj = (Projectile) e.getDamager();
-            EntityProjectile ep = ((CraftProjectile)pj).getHandle();
-            e.getPlayer().sendMessage(ep.getBoundingBox().toString());
         }
     }
 

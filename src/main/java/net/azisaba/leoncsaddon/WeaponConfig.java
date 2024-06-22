@@ -41,6 +41,7 @@ public class WeaponConfig extends Config{
 
                         List<String> type = configuration.getStringList(key + ".type");
                         boolean isMain = configuration.getBoolean(key + ".isMain",true);
+                        List<String> requirements = configuration.getStringList(key + ".requirements");
                         double damage = configuration.getDouble(key + ".damage",0);
                         double headshotBonusDamage = configuration.getDouble(key + ".headshotBonusDamage",0);
                         double criticalBonusDamage = configuration.getDouble(key + ".criticalBonusDamage",0);
@@ -53,7 +54,7 @@ public class WeaponConfig extends Config{
                         double projectileSizeXZ = configuration.getDouble(key + ".projectileSize.xz",0);
                         double projectileSizeY = configuration.getDouble(key + ".projectileSize.y",0);
 
-                        weaponsMap.put(key,new WeaponConfigData(key, type, isMain, damage, headshotBonusDamage, criticalBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY));
+                        weaponsMap.put(key,new WeaponConfigData(key, type, isMain, requirements, damage, headshotBonusDamage, criticalBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY));
 
                     });
                 }
