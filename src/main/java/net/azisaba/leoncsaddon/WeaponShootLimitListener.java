@@ -21,7 +21,7 @@ public class WeaponShootLimitListener implements Listener {
                 if(weaponTitle != null){
                     WeaponConfigData otherData = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(weaponTitle);
                     if(otherData != null && otherData.isMain){
-                        if(!Collections.disjoint(data.requirements, otherData.type)){
+                        if(Collections.disjoint(data.requirements, otherData.type)){
                             e.setCancelled(true);
                         }
                     }
