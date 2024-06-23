@@ -38,7 +38,7 @@ public class WeaponShootLimitListener implements Listener {
         if(e.getEntity().getPickupDelay() != 24000) return;
 
         for(Player player: e.getEntity().getWorld().getPlayers()){
-            if(e.getEntity().getLocation().equals(player.getEyeLocation())){
+            if(e.getEntity().getLocation().distanceSquared(player.getEyeLocation()) < 1){
                 WeaponConfigData data = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(new CSUtility().getWeaponTitle(player.getInventory().getItemInMainHand()));
                 if(data != null && !data.isMain){
                     for(int i = 0; i < 9; i++){
