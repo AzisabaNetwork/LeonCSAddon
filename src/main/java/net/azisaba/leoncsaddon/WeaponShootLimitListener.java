@@ -1,6 +1,7 @@
 package net.azisaba.leoncsaddon;
 
 import com.shampaggon.crackshot.CSUtility;
+import com.shampaggon.crackshot.events.WeaponPlaceMineEvent;
 import com.shampaggon.crackshot.events.WeaponPreShootEvent;
 import com.shampaggon.crackshot.events.WeaponPrepareShootEvent;
 import org.bukkit.event.EventHandler;
@@ -21,13 +22,33 @@ public class WeaponShootLimitListener implements Listener {
                 if(weaponTitle != null){
                     WeaponConfigData otherData = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(weaponTitle);
                     if(otherData != null && otherData.isMain){
-                        if(Collections.disjoint(data.requirements, otherData.type)){
+                        if(data.requirements != null && otherData.type != null && Collections.disjoint(data.requirements, otherData.type)){
                             e.setCancelled(true);
                         }
                     }
                 }
             }
         }
+    }
+
+    @EventHandler
+    public void onPlaceLandmine(WeaponPlaceMineEvent e){
+        WeaponConfigData data = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(e.getWeaponTitle());
+        if(data != null && !data.isMain){
+            for(int i = 0; i < 9; i++){
+                ItemStack item = e.getPlayer().getInventory().getItem(i);
+                String weaponTitle = new CSUtility().getWeaponTitle(item);
+                if(weaponTitle != null){
+                    WeaponConfigData otherData = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(weaponTitle);
+                    if(otherData != null && otherData.isMain){
+                        if(data.requirements != null && otherData.type != null && Collections.disjoint(data.requirements, otherData.type)){
+                            e.getMine().remove();
+                        }
+                    }
+                }
+            }
+        }
+    }
     }
 
 }
