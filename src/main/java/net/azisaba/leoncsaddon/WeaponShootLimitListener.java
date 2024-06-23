@@ -49,6 +49,5 @@ public class WeaponShootLimitListener implements Listener {
             }
         }
     }
-    }
 
 }
