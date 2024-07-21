@@ -26,6 +26,9 @@ public class WeaponShootLimitListener implements Listener {
                     if(otherData != null && otherData.isMain){
                         if(data.requirements != null && otherData.type != null && Collections.disjoint(data.requirements, otherData.type)){
                             e.setCancelled(true);
+                        }else {
+                            e.setCancelled(false);
+                            return;
                         }
                     }
                 }
