@@ -55,7 +55,7 @@ public class WeaponConfig extends Config{
                         double reduceDamage = configuration.getDouble(key + ".reduceDamage",0);
                         double projectileSizeXZ = configuration.getDouble(key + ".projectileSize.xz",0);
                         double projectileSizeY = configuration.getDouble(key + ".projectileSize.y",0);
-                        String[] allyPotion = configuration.getString(key + ".allypotion").split(",");
+                        String[] allyPotion = configuration.getString(key + ".allypotion", "").split(",");
                         List<PotionEffect> potionEffectList = new ArrayList<>();
 
                         for(int i = 0; i < allyPotion.length; ++i) {
