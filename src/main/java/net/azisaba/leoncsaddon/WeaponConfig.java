@@ -2,6 +2,8 @@ package net.azisaba.leoncsaddon;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -53,8 +55,31 @@ public class WeaponConfig extends Config{
                         double reduceDamage = configuration.getDouble(key + ".reduceDamage",0);
                         double projectileSizeXZ = configuration.getDouble(key + ".projectileSize.xz",0);
                         double projectileSizeY = configuration.getDouble(key + ".projectileSize.y",0);
+                        String[] allyPotion = configuration.getString(key + ".allypotion").split(",");
+                        List<PotionEffect> potionEffectList = new ArrayList<>();
 
-                        weaponsMap.put(key,new WeaponConfigData(key, type, isMain, requirements, damage, headshotBonusDamage, criticalBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY));
+                        for(int i = 0; i < allyPotion.length; ++i) {
+                            String potFX = allyPotion[i];
+                            potFX = potFX.replace(" ", "");
+                            String[] args = potFX.split("-");
+                            if (args.length == 3) {
+                                try {
+                                    PotionEffectType potionType = PotionEffectType.getByName(args[0].toUpperCase());
+                                    int duration = Integer.parseInt(args[1]);
+                                    if (potionType.getDurationModifier() != 1.0) {
+                                        double maths = (double)duration * (1.0 / potionType.getDurationModifier());
+                                        duration = (int)maths;
+                                    }
+                                    potionEffectList.add(potionType.createEffect(duration, Integer.parseInt(args[2]) - 1));
+                                } catch (Exception var15) {
+                                    System.out.println("[LeonCSAddon] '" + potFX + "' of weapon '" + key + "' has an incorrect potion type, duration or level!");
+                                }
+                            } else {
+                                System.out.println("[LeonCSAddon] '" + potFX + "' of weapon '" + key + "' has an invalid format! The correct format is: Potion-Duration-Level!");
+                            }
+                        }
+
+                        weaponsMap.put(key,new WeaponConfigData(key, type, isMain, requirements, damage, headshotBonusDamage, criticalBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY, potionEffectList));
 
                     });
                 }

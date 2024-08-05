@@ -1,5 +1,7 @@
 package net.azisaba.leoncsaddon;
 
+import org.bukkit.potion.PotionEffect;
+
 import java.util.List;
 
 public class WeaponConfigData {
@@ -14,6 +16,8 @@ public class WeaponConfigData {
     public final double projectileSizeXZ;
     public final double projectileSizeY;
 
+    public final List<PotionEffect> allyPotion;
+
     public final double guardMult;
     public final float walkSpeed;
     public final boolean canSprint;
@@ -22,7 +26,7 @@ public class WeaponConfigData {
     public final int reduceEndTick;
     public final double reduceDamage;
 
-    public WeaponConfigData(String name, List<String> type, boolean isMain, List<String> requirements, double damage, double headshotBonusDamage, double criticalBonusDamage, double guardMult, float walkSpeed, boolean canSprint, int reduceStartTick, int reduceEndTick, double reduceDamage, double projectileSizeXZ, double projectileSizeY){
+    public WeaponConfigData(String name, List<String> type, boolean isMain, List<String> requirements, double damage, double headshotBonusDamage, double criticalBonusDamage, double guardMult, float walkSpeed, boolean canSprint, int reduceStartTick, int reduceEndTick, double reduceDamage, double projectileSizeXZ, double projectileSizeY, List<PotionEffect> potionEffectList){
         this.type = type;
         this.isMain = isMain;
         this.requirements = requirements;
@@ -38,6 +42,7 @@ public class WeaponConfigData {
         this.reduceDamage = reduceDamage;
         this.projectileSizeXZ = projectileSizeXZ;
         this.projectileSizeY = projectileSizeY;
+        this.allyPotion = potionEffectList;
     }
 
 }
