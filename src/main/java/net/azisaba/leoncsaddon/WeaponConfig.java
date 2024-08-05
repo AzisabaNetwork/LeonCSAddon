@@ -74,8 +74,6 @@ public class WeaponConfig extends Config{
                                 } catch (Exception var15) {
                                     System.out.println("[LeonCSAddon] '" + potFX + "' of weapon '" + key + "' has an incorrect potion type, duration or level!");
                                 }
-                            } else {
-                                System.out.println("[LeonCSAddon] '" + potFX + "' of weapon '" + key + "' has an invalid format! The correct format is: Potion-Duration-Level!");
                             }
                         }
 
