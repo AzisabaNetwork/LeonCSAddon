@@ -6,6 +6,7 @@ import org.bukkit.entity.Egg;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.metadata.MetadataValue;
@@ -13,7 +14,7 @@ import org.bukkit.potion.PotionEffect;
 
 public class WeaponPotionListener implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
     public void onDamage(ProjectileHitEvent e){
         if(!(e.getHitEntity() instanceof Player)) return;
         if(!(e.getEntity().getShooter() instanceof Player)) return;
