@@ -15,7 +15,7 @@ import org.bukkit.event.Listener;
 import java.lang.reflect.Field;
 
 public class CustomProjectileSizeListener implements Listener {
-
+/*
     @EventHandler
     public void onShoot(WeaponShootEvent e){
         WeaponConfigData data = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(e.getWeaponTitle());
@@ -33,5 +33,5 @@ public class CustomProjectileSizeListener implements Listener {
             }
         }
     }
-
+*/
 }
