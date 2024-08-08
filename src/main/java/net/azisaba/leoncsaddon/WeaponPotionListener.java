@@ -20,9 +20,7 @@ public class WeaponPotionListener implements Listener {
         if(!(e.getHitEntity() instanceof Player)) return;
         if(!(e.getEntity().getShooter() instanceof Player)) return;
         if(!(e.getEntity() instanceof Snowball) && !(e.getEntity() instanceof Egg) && !(e.getEntity() instanceof Arrow)) return;
-        Bukkit.broadcastMessage("called");
         if(!e.getEntity().hasMetadata("projParentNode")) return;
-        Bukkit.broadcastMessage("hasMetadata");
 
         WeaponConfigData data = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(((MetadataValue)e.getEntity().getMetadata("projParentNode").get(0)).asString());
 
@@ -31,9 +29,7 @@ public class WeaponPotionListener implements Listener {
         Player shooter = ((Player)e.getEntity().getShooter());
         Player victimPlayer = ((Player) e.getHitEntity());
 
-        if(shooter.getScoreboard().getEntryTeam(shooter.getName())
-                == victimPlayer.getScoreboard().getEntryTeam(e.getHitEntity().getName())){
-            Bukkit.broadcastMessage("same team");
+        if(shooter.getScoreboard().getEntryTeam(shooter.getName()) != null && shooter.getScoreboard().getEntryTeam(shooter.getName()).hasEntry(victimPlayer.getName())){
             for(PotionEffect effect: data.allyPotion){
                 victimPlayer.removePotionEffect(effect.getType());
                 victimPlayer.addPotionEffect(effect);
