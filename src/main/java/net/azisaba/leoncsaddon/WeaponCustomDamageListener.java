@@ -27,6 +27,9 @@ public class WeaponCustomDamageListener implements Listener {
             if(e.isCritical()){
                 e.setDamage(e.getDamage() + data.criticalBonusDamage);
             }
+            if(e.isBackstab()){
+                e.setDamage(e.getDamage() + data.backstabBonusDamage);
+            }
 
             if(e.getDamager() instanceof Projectile){
 

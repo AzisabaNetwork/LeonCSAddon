@@ -47,6 +47,7 @@ public class WeaponConfig extends Config{
                         double damage = configuration.getDouble(key + ".damage",0);
                         double headshotBonusDamage = configuration.getDouble(key + ".headshotBonusDamage",0);
                         double criticalBonusDamage = configuration.getDouble(key + ".criticalBonusDamage",0);
+                        double backstabBonusDamage = configuration.getDouble(key + ".backstabBonusDamage", 0);
                         double guardMult = configuration.getDouble(key + ".guardMult",1.0);
                         float walkSpeed = (float) configuration.getDouble(key + ".walkSpeed",0.2);
                         boolean canSprint = configuration.getBoolean(key + ".canSprint",false);
@@ -77,7 +78,7 @@ public class WeaponConfig extends Config{
                             }
                         }
 
-                        weaponsMap.put(key,new WeaponConfigData(key, type, isMain, requirements, damage, headshotBonusDamage, criticalBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY, potionEffectList));
+                        weaponsMap.put(key,new WeaponConfigData(key, type, isMain, requirements, damage, headshotBonusDamage, criticalBonusDamage, backstabBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY, potionEffectList));
 
                     });
                 }
