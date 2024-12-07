@@ -56,6 +56,8 @@ public class WeaponConfig extends Config{
                         double reduceDamage = configuration.getDouble(key + ".reduceDamage",0);
                         double projectileSizeXZ = configuration.getDouble(key + ".projectileSize.xz",0);
                         double projectileSizeY = configuration.getDouble(key + ".projectileSize.y",0);
+                        Integer dualWieldWeaponCMD = (Integer) configuration.get(key + ".dualWieldWeaponCMD", null);
+
                         String[] allyPotion = configuration.getString(key + ".allypotion", "").split(",");
                         List<PotionEffect> potionEffectList = new ArrayList<>();
 
@@ -78,7 +80,7 @@ public class WeaponConfig extends Config{
                             }
                         }
 
-                        weaponsMap.put(key,new WeaponConfigData(key, type, isMain, requirements, damage, headshotBonusDamage, criticalBonusDamage, backstabBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY, potionEffectList));
+                        weaponsMap.put(key,new WeaponConfigData(key, type, isMain, requirements, damage, headshotBonusDamage, criticalBonusDamage, backstabBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY, dualWieldWeaponCMD, potionEffectList));
 
                     });
                 }

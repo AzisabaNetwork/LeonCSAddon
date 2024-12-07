@@ -27,7 +27,9 @@ public class WeaponConfigData {
     public final int reduceEndTick;
     public final double reduceDamage;
 
-    public WeaponConfigData(String name, List<String> type, boolean isMain, List<String> requirements, double damage, double headshotBonusDamage, double criticalBonusDamage, double backstabBonusDamage, double guardMult, float walkSpeed, boolean canSprint, int reduceStartTick, int reduceEndTick, double reduceDamage, double projectileSizeXZ, double projectileSizeY, List<PotionEffect> potionEffectList){
+    public final Integer dualWieldWeaponCMD;
+
+    public WeaponConfigData(String name, List<String> type, boolean isMain, List<String> requirements, double damage, double headshotBonusDamage, double criticalBonusDamage, double backstabBonusDamage, double guardMult, float walkSpeed, boolean canSprint, int reduceStartTick, int reduceEndTick, double reduceDamage, double projectileSizeXZ, double projectileSizeY, Integer dualWieldWeaponCMD, List<PotionEffect> potionEffectList){
         this.type = type;
         this.isMain = isMain;
         this.requirements = requirements;
@@ -44,6 +46,7 @@ public class WeaponConfigData {
         this.reduceDamage = reduceDamage;
         this.projectileSizeXZ = projectileSizeXZ;
         this.projectileSizeY = projectileSizeY;
+        this.dualWieldWeaponCMD = dualWieldWeaponCMD;
         this.allyPotion = potionEffectList;
     }
 
