@@ -1,0 +1,4 @@
+# 拡散倍率最大値
+# 負数の場合は無制限
+scoped_spread_cap: -1.0 # 覗き状態
+un_scoped_spread_cap: 10.0 # 非覗き状態
