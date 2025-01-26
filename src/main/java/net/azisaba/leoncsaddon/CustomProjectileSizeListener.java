@@ -2,12 +2,6 @@ package net.azisaba.leoncsaddon;
 
 import com.shampaggon.crackshot.events.WeaponDamageEntityEvent;
 import com.shampaggon.crackshot.events.WeaponShootEvent;
-import net.minecraft.server.v1_15_R1.AxisAlignedBB;
-import net.minecraft.server.v1_15_R1.Entity;
-import net.minecraft.server.v1_15_R1.EntityProjectile;
-import net.minecraft.server.v1_15_R1.EntitySize;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftEntity;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftProjectile;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
