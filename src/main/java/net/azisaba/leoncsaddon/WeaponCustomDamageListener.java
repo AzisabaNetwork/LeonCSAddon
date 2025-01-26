@@ -19,7 +19,11 @@ public class WeaponCustomDamageListener implements Listener {
 
         if(data != null && !(e.getDamager() instanceof TNTPrimed)){
 
-            e.setDamage(data.damage);
+            if(data.type.contains("sr")){
+                e.setDamage(data.damage);
+            }else {
+                e.setDamage(data.damage + WeaponDamageRandomizer.getRandomDamage());
+            }
 
             if(e.isHeadshot()){
                 e.setDamage(e.getDamage() + data.headshotBonusDamage);
