@@ -14,6 +14,7 @@ public final class LeonCSAddon extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         INSTANCE = this;
+        this.saveDefaultConfig();
         weaponConfig = new WeaponConfig(getDataFolder(),"weaponConfig");
         weaponConfig.load();
 
@@ -22,6 +23,7 @@ public final class LeonCSAddon extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new WeaponShootLimitListener(), this);
         Bukkit.getPluginManager().registerEvents(new WeaponPotionListener(), this);
         Bukkit.getPluginManager().registerEvents(new DualWieldWeaponListener(), this);
+        Bukkit.getPluginManager().registerEvents(new WeaponPreShootListener(), this);
 
         weaponDamageRandomizer = new WeaponDamageRandomizer();
         weaponDamageRandomizer.randomDamageUpdaterDefaultTask();
