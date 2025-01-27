@@ -1,7 +1,6 @@
 package net.azisaba.leoncsaddon;
 
 import com.shampaggon.crackshot.CSUtility;
-import me.DeeCaaD.CrackShotPlus.Events.WeaponHeldEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

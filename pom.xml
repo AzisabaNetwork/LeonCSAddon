@@ -73,12 +73,6 @@
           <version>0.98.11</version>
           <scope>provided</scope>
       </dependency>
-      <dependency>
-          <groupId>me.DeeCaaD</groupId>
-          <artifactId>CrackShotPlus</artifactId>
-          <version>1.108</version>
-          <scope>provided</scope>
-      </dependency>
   </dependencies>
 
     <distributionManagement>
