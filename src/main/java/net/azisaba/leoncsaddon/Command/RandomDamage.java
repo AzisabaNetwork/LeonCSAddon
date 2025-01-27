@@ -11,12 +11,20 @@ public class RandomDamage implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        commandSender.sendMessage("現在のランダムダメージ:" + String.valueOf(WeaponDamageRandomizer.getRandomDamage()));
-        if(args.length == 1){
+        commandSender.sendMessage("更新前のランダムダメージ:" + String.valueOf(WeaponDamageRandomizer.getRandomDamage()));
+        if(args.length == 2){
             if(args[0].equals("set")){
-                LeonCSAddon.weaponDamageRandomizer.randomDamageUpdaterDefaultTask();
+                try {
+                    // args[1] を数値に変換
+                    WeaponDamageRandomizer.randomDamage = Double.parseDouble(args[1]);
+                } catch (NumberFormatException e) {
+                    // パースに失敗した場合は 0 を代入
+                    System.out.println("数値のパースに失敗しました。デフォルト値 0 を代入します。");
+                    WeaponDamageRandomizer.randomDamage = 0.0;
+                }
             }
         }
+        commandSender.sendMessage("現在のランダムダメージ:" + String.valueOf(WeaponDamageRandomizer.getRandomDamage()));
         return true;
     }
 }
