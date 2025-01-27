@@ -22,7 +22,7 @@ public class WeaponCustomDamageListener implements Listener {
             if(data.type.contains("sr")){
                 e.setDamage(data.damage);
             }else {
-                e.setDamage(data.damage + WeaponDamageRandomizer.getRandomDamage());
+                e.setDamage(data.damage + WeaponDamageRandomizer.randomDamage);
             }
 
             if(e.isHeadshot()){

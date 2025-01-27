@@ -11,7 +11,7 @@ public class RandomDamage implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        commandSender.sendMessage("更新前のランダムダメージ:" + String.valueOf(WeaponDamageRandomizer.getRandomDamage()));
+        commandSender.sendMessage("更新前のランダムダメージ:" + String.valueOf(WeaponDamageRandomizer.randomDamage));
         if(args.length == 2){
             if(args[0].equals("set")){
                 try {
@@ -24,7 +24,7 @@ public class RandomDamage implements CommandExecutor {
                 }
             }
         }
-        commandSender.sendMessage("現在のランダムダメージ:" + String.valueOf(WeaponDamageRandomizer.getRandomDamage()));
+            commandSender.sendMessage("現在のランダムダメージ:" + String.valueOf(WeaponDamageRandomizer.randomDamage));
         return true;
     }
 }

@@ -57,7 +57,7 @@ public class WeaponDamageRandomizer {
         Bukkit.getServer().broadcast(Component.text("現在の値は" + randomDamage + "です").color(NamedTextColor.AQUA).decorate(TextDecoration.BOLD));
     }
 
-    public static double getRandomDamage(){
+    public double getRandomDamage(){
         return randomDamage;
     }
 }
