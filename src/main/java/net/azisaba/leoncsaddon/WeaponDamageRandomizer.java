@@ -1,5 +1,6 @@
 package net.azisaba.leoncsaddon;
 
+import net.azisaba.leoncsaddon.IO.SharedRandomDamage;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -13,6 +14,18 @@ import java.util.concurrent.TimeUnit;
 public class WeaponDamageRandomizer {
     public static double randomDamage = 0;
 
+    public void damageLobbyUpdaterTaskStarter(){
+        //2025 2月14日以降は停止
+        LocalDate today = LocalDate.now();
+        LocalDate targetDate = LocalDate.of(2025, 2, 14);
+        LocalDate targetDate2 = LocalDate.of(2025, 1, 31);
+        if(!today.isAfter(targetDate) && today.isAfter(targetDate2)){
+            for(int hour = 0; hour <= 24; hour++){
+                scheduleDailyTask(hour, 0, this::randomLobbyDamageUpdaterDefaultTask);
+            }
+        }
+    }
+
     public void damageUpdaterTaskStarter(){
         //2025 2月14日以降は停止
         LocalDate today = LocalDate.now();
@@ -20,10 +33,11 @@ public class WeaponDamageRandomizer {
         LocalDate targetDate2 = LocalDate.of(2025, 1, 31);
         if(!today.isAfter(targetDate) && today.isAfter(targetDate2)){
             for(int hour = 0; hour <= 24; hour++){
-                scheduleDailyTask(hour, 0, this::randomDamageUpdaterDefaultTask);
+                scheduleDailyTask(hour, 1, this::randomDamageUpdaterDefaultTask);
             }
         }
     }
+
     //1日の指定された時間、分に送られてきたタスクを実行
     private void scheduleDailyTask(int hour, int minute, Runnable task) {
         long currentMillis = System.currentTimeMillis();
@@ -49,15 +63,26 @@ public class WeaponDamageRandomizer {
         Random random = new Random();
         double randomValue = (-0.5) + (0 - (-0.5)) * random.nextDouble();
         randomDamage = Math.round(randomValue * 10) / 10.0;
+        SharedRandomDamage.saveRD();
+    }
+
+    public void randomLobbyDamageUpdaterDefaultTask(){
+        getRandomValueInRange();
+        Bukkit.getServer().broadcast(Component.text("ランダムダメージ値が更新されました").color(NamedTextColor.AQUA).decorate(TextDecoration.BOLD));
+        Bukkit.getServer().broadcast(Component.text("現在の値は" + randomDamage + "です").color(NamedTextColor.AQUA).decorate(TextDecoration.BOLD));
     }
 
     public void randomDamageUpdaterDefaultTask(){
-        getRandomValueInRange();
+        randomDamage = SharedRandomDamage.loadRD();
         Bukkit.getServer().broadcast(Component.text("ランダムダメージ値が更新されました").color(NamedTextColor.AQUA).decorate(TextDecoration.BOLD));
         Bukkit.getServer().broadcast(Component.text("現在の値は" + randomDamage + "です").color(NamedTextColor.AQUA).decorate(TextDecoration.BOLD));
     }
 
     public double getRandomDamage(){
         return randomDamage;
+    }
+
+    public void setRandomDamage(double number){
+        randomDamage = number;
     }
 }

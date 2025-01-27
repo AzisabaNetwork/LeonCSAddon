@@ -1,6 +1,7 @@
 package net.azisaba.leoncsaddon;
 
 import net.azisaba.leoncsaddon.Command.RandomDamage;
+import net.azisaba.leoncsaddon.IO.SharedRandomDamage;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,7 +32,12 @@ public final class LeonCSAddon extends JavaPlugin {
         LocalDate today = LocalDate.now();
         LocalDate targetDate = LocalDate.of(2025, 2, 14);
         LocalDate targetDate2 = LocalDate.of(2025, 1, 31);
-        if (!INSTANCE.getConfig().getBoolean("isLobby", false)) {
+        if (INSTANCE.getConfig().getBoolean("isLobby", false)) {
+            if (!today.isAfter(targetDate) && today.isAfter(targetDate2)) {
+                weaponDamageRandomizer.randomLobbyDamageUpdaterDefaultTask();
+            }
+            weaponDamageRandomizer.damageLobbyUpdaterTaskStarter();
+        }else {
             if (!today.isAfter(targetDate) && today.isAfter(targetDate2)) {
                 weaponDamageRandomizer.randomDamageUpdaterDefaultTask();
             }
