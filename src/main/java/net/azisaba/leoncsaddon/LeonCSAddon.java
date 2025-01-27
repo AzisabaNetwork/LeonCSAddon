@@ -10,7 +10,7 @@ public final class LeonCSAddon extends JavaPlugin {
 
     public static LeonCSAddon INSTANCE;
     private WeaponConfig weaponConfig;
-    public static WeaponDamageRandomizer weaponDamageRandomizer;
+    public WeaponDamageRandomizer weaponDamageRandomizer;
 
     @Override
     public void onEnable() {
