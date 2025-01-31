@@ -31,14 +31,13 @@ public final class LeonCSAddon extends JavaPlugin {
         weaponDamageRandomizer = new WeaponDamageRandomizer();
         LocalDate today = LocalDate.now();
         LocalDate targetDate = LocalDate.of(2025, 2, 14);
-        LocalDate targetDate2 = LocalDate.of(2025, 1, 31);
         if (INSTANCE.getConfig().getBoolean("isLobby", false)) {
-            if (!today.isAfter(targetDate) && today.isAfter(targetDate2)) {
+            if (!today.isAfter(targetDate)) {
                 weaponDamageRandomizer.randomLobbyDamageUpdaterDefaultTask();
             }
             weaponDamageRandomizer.damageLobbyUpdaterTaskStarter();
         }else {
-            if (!today.isAfter(targetDate) && today.isAfter(targetDate2)) {
+            if (!today.isAfter(targetDate)) {
                 weaponDamageRandomizer.randomDamageUpdaterDefaultTask();
             }
             weaponDamageRandomizer.damageUpdaterTaskStarter();

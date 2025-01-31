@@ -18,8 +18,7 @@ public class WeaponDamageRandomizer {
         //2025 2月14日以降は停止
         LocalDate today = LocalDate.now();
         LocalDate targetDate = LocalDate.of(2025, 2, 14);
-        LocalDate targetDate2 = LocalDate.of(2025, 1, 31);
-        if(!today.isAfter(targetDate) && today.isAfter(targetDate2)){
+        if(!today.isAfter(targetDate)){
             for(int hour = 0; hour <= 24; hour++){
                 scheduleDailyTask(hour, 0, this::randomLobbyDamageUpdaterDefaultTask);
             }
@@ -30,8 +29,7 @@ public class WeaponDamageRandomizer {
         //2025 2月14日以降は停止
         LocalDate today = LocalDate.now();
         LocalDate targetDate = LocalDate.of(2025, 2, 14);
-        LocalDate targetDate2 = LocalDate.of(2025, 1, 31);
-        if(!today.isAfter(targetDate) && today.isAfter(targetDate2)){
+        if(!today.isAfter(targetDate)){
             for(int hour = 0; hour <= 24; hour++){
                 scheduleDailyTask(hour, 1, this::randomDamageUpdaterDefaultTask);
             }
