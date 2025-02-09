@@ -3,7 +3,14 @@
 
 name: Maven Package
 
-on: [push, workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**.md"
+      - "renovate.json"
 
 jobs:
   build:
