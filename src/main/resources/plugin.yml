@@ -4,3 +4,10 @@ main: net.azisaba.leoncsaddon.LeonCSAddon
 api-version: '1.15'
 depend:
   - CrackShot
+commands:
+  lcareload:
+    permission: leoncsaddon.command.admin
+    aliases: [ lcar ]
+permissions:
+  leoncsaddon.command.admin:
+    default: op
