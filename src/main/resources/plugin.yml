@@ -8,6 +8,9 @@ commands:
   randomdamage:
     permission: leoncsaddon.command.admin
     aliases: [rd]
+  lcareload:
+    permission: leoncsaddon.command.admin
+    aliases: [ lcar ]
 permissions:
   leoncsaddon.command.admin:
     default: op

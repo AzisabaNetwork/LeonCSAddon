@@ -1,6 +1,7 @@
 package net.azisaba.leoncsaddon;
 
 import net.azisaba.leoncsaddon.Command.RandomDamage;
+import net.azisaba.leoncsaddon.Command.Reload;
 import net.azisaba.leoncsaddon.IO.SharedRandomDamage;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -44,6 +45,7 @@ public final class LeonCSAddon extends JavaPlugin {
         }
 
         getCommand("randomdamage").setExecutor(new RandomDamage());
+        getCommand("lcareload").setExecutor(new Reload());
     }
 
     @Override

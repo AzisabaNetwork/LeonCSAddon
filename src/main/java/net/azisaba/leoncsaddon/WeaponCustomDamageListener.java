@@ -10,16 +10,18 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
+import static net.azisaba.leoncsaddon.LeonCSAddon.INSTANCE;
+
 public class WeaponCustomDamageListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onWeaponDamage(WeaponDamageEntityEvent e){
 
-        WeaponConfigData data = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(e.getWeaponTitle());
+        WeaponConfigData data = INSTANCE.getWeaponConfig().getWeaponConfigData(e.getWeaponTitle());
 
         if(data != null && !(e.getDamager() instanceof TNTPrimed)){
 
-            if(data.type.contains("sr")){
+            if(data.type.contains("sr")|| INSTANCE.getConfig().getBoolean("isLobby", false)){
                 e.setDamage(data.damage);
             }else {
                 e.setDamage(data.damage + WeaponDamageRandomizer.randomDamage);
@@ -51,7 +53,7 @@ public class WeaponCustomDamageListener implements Listener {
                 ItemStack hand = victim.getInventory().getItemInMainHand();
                 String weaponTitle = new CSUtility().getWeaponTitle(hand);
                 if(weaponTitle != null){
-                    WeaponConfigData victimData = LeonCSAddon.INSTANCE.getWeaponConfig().getWeaponConfigData(weaponTitle);
+                    WeaponConfigData victimData = INSTANCE.getWeaponConfig().getWeaponConfigData(weaponTitle);
                     if(victimData != null) {
                         e.setDamage(e.getDamage() * victimData.guardMult);
                     }
