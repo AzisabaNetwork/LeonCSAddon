@@ -1,7 +1,7 @@
 package net.azisaba.leoncsaddon;
 
 import com.shampaggon.crackshot.CSUtility;
-import me.DeeCaaD.CrackShotPlus.Events.WeaponHeldEvent;
+//import me.DeeCaaD.CrackShotPlus.Events.WeaponHeldEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class DualWieldWeaponListener implements Listener {
-
+/**
     @EventHandler (priority = EventPriority.LOWEST)
     public void onChangeItem(PlayerItemHeldEvent e) {
         Player player = e.getPlayer();
@@ -36,5 +36,5 @@ public class DualWieldWeaponListener implements Listener {
             }
         }
     }
-
+**/
 }
