@@ -3,6 +3,7 @@ package net.azisaba.leoncsaddon;
 import com.shampaggon.crackshot.events.WeaponPreShootEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
 import java.math.BigDecimal;
@@ -17,7 +18,7 @@ public class WeaponPreShootListener implements Listener {
 	 * 射撃時処理
 	 * @param event 射撃時イベント
 	 */
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onWeaponPreShoot(WeaponPreShootEvent event) {
 		// 拡散倍率にキャップを適用する
 		double spread = event.getBulletSpread();
