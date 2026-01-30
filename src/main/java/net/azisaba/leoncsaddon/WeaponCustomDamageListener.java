@@ -35,9 +35,8 @@ public class WeaponCustomDamageListener implements Listener {
 
                 int reduceTicks = e.getDamager().getTicksLived();
                 reduceTicks = reduceTicks - data.reduceStartTick;
-                if(e.getDamager().getTicksLived() > data.reduceEndTick){
-                    reduceTicks = data.reduceEndTick - data.reduceStartTick;
-                }
+                reduceTicks = Math.min(reduceTicks, data.reduceEndTick - data.reduceStartTick);
+                reduceTicks = Math.max(reduceTicks, 0);
 
                 e.setDamage(e.getDamage() + data.reduceDamage * reduceTicks);
             }
