@@ -33,7 +33,8 @@ public class WeaponCustomDamageListener implements Listener {
 
             if(e.getDamager() instanceof Projectile){
 
-                int reduceTicks = e.getDamager().getTicksLived();
+                Projectile projectile = (Projectile) e.getDamager();
+                int reduceTicks = projectile.getTicksLived();
                 reduceTicks = reduceTicks - data.reduceStartTick;
                 reduceTicks = Math.min(reduceTicks, data.reduceEndTick - data.reduceStartTick);
                 reduceTicks = Math.max(reduceTicks, 0);
