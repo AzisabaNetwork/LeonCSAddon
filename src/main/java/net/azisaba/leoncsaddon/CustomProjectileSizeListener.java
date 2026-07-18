@@ -48,7 +48,13 @@ public class CustomProjectileSizeListener implements Listener {
                     location.getY() + data.projectileSizeY,
                     location.getZ() + halfWidth);
 
-            findBoundingBoxSetter(nmsEntityClass, boundingBoxClass).invoke(nmsProjectile, boundingBox);
+            findBoundingBoxSetter(nmsEntityClass, boundingBoxClass)
+                    .invoke(nmsProjectile, boundingBox);
+//            LeonCSAddon.INSTANCE.getLogger().info(
+//                    "[ProjectileSizeDebug] weapon=" + e.getWeaponTitle()
+//                            + " width=" + projectile.getWidth()
+//                            + " height=" + projectile.getHeight()
+//            );
         } catch (ReflectiveOperationException | RuntimeException ex) {
             LeonCSAddon.INSTANCE.getLogger().log(Level.WARNING,
                     "Failed to apply projectileSize to " + e.getWeaponTitle(), ex);
