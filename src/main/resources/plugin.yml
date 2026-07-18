@@ -1,7 +1,7 @@
 name: LeonCSAddon
 version: '${project.version}'
 main: net.azisaba.leoncsaddon.LeonCSAddon
-api-version: '1.15'
+api-version: '1.16'
 depend:
   - CrackShot
 commands:
