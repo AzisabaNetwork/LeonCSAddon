@@ -21,7 +21,7 @@ public final class LeonCSAddon extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new CustomProjectileSizeListener(),this);
         Bukkit.getPluginManager().registerEvents(new WeaponShootLimitListener(), this);
         Bukkit.getPluginManager().registerEvents(new WeaponPotionListener(), this);
-        //Bukkit.getPluginManager().registerEvents(new DualWieldWeaponListener(), this);
+        // Bukkit.getPluginManager().registerEvents(new DualWieldWeaponListener(this), this);
         Bukkit.getPluginManager().registerEvents(new WeaponPreShootListener(), this);
         getCommand("lcareload").setExecutor(new Reload());
     }

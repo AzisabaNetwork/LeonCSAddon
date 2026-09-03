@@ -1,9 +1,7 @@
 package net.azisaba.leoncsaddon;
 
-import com.shampaggon.crackshot.CSUtility;
-import com.shampaggon.crackshot.events.WeaponPlaceMineEvent;
-import com.shampaggon.crackshot.events.WeaponPreShootEvent;
-import com.shampaggon.crackshot.events.WeaponPrepareShootEvent;
+import net.azisaba.crackshot.CSUtility;
+import net.azisaba.crackshot.events.WeaponPrepareShootEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -59,8 +57,5 @@ public class WeaponShootLimitListener implements Listener {
                 }
             }
         }
-
-
     }
-
 }

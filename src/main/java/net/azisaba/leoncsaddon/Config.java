@@ -1,5 +1,5 @@
 package net.azisaba.leoncsaddon;
-import org.bukkit.configuration.Configuration;
+
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -42,7 +42,7 @@ public class Config {
 
     public String loadAsString(){
         try {
-            return Files.lines(getPath()).collect(Collectors.joining(System.lineSeparator()));
+            return Files.readString(getPath());
         } catch (IOException exception) {
             exception.printStackTrace();
             return "";
@@ -50,8 +50,15 @@ public class Config {
     }
 
     public String loadResourceAsString() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(getResource(), StandardCharsets.UTF_8));
-        return reader.lines().collect(Collectors.joining(System.lineSeparator()));
+        try (InputStream in = getResource()) {
+            if (in == null) return "";
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {
+                return reader.lines().collect(Collectors.joining(System.lineSeparator()));
+            }
+        } catch (IOException exception) {
+            exception.printStackTrace();
+            return "";
+        }
     }
 
     public InputStream getResource() {
@@ -71,9 +78,11 @@ public class Config {
     }
 
     public void saveResource() {
-        try {
-            Files.createDirectories(getPath().getParent());
-            Files.copy(getResource(), getPath());
+        try (InputStream in = getResource()) {
+            if (in != null) {
+                Files.createDirectories(getPath().getParent());
+                Files.copy(in, getPath());
+            }
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -82,7 +91,7 @@ public class Config {
     public void saveConfig() {
         try {
             Files.createDirectories(getPath().getParent());
-            Files.write(getPath(), config.saveToString().getBytes(StandardCharsets.UTF_8));
+            Files.writeString(getPath(), config.saveToString());
         } catch (IOException exception) {
             exception.printStackTrace();
         }

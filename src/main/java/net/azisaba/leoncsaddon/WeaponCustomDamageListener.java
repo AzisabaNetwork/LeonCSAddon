@@ -1,7 +1,7 @@
 package net.azisaba.leoncsaddon;
 
-import com.shampaggon.crackshot.CSUtility;
-import com.shampaggon.crackshot.events.WeaponDamageEntityEvent;
+import net.azisaba.crackshot.CSUtility;
+import net.azisaba.crackshot.events.WeaponDamageEntityEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.TNTPrimed;
@@ -31,9 +31,8 @@ public class WeaponCustomDamageListener implements Listener {
                 e.setDamage(e.getDamage() + data.backstabBonusDamage);
             }
 
-            if(e.getDamager() instanceof Projectile){
+            if(e.getDamager() instanceof Projectile projectile){
 
-                Projectile projectile = (Projectile) e.getDamager();
                 int reduceTicks = projectile.getTicksLived();
                 reduceTicks = reduceTicks - data.reduceStartTick;
                 reduceTicks = Math.min(reduceTicks, data.reduceEndTick - data.reduceStartTick);
@@ -42,8 +41,7 @@ public class WeaponCustomDamageListener implements Listener {
                 e.setDamage(e.getDamage() + data.reduceDamage * reduceTicks);
             }
 
-            if(e.getVictim() instanceof Player){
-                Player victim = (Player) e.getVictim();
+            if(e.getVictim() instanceof Player victim){
                 ItemStack hand = victim.getInventory().getItemInMainHand();
                 String weaponTitle = new CSUtility().getWeaponTitle(hand);
                 if(weaponTitle != null){
@@ -53,9 +51,6 @@ public class WeaponCustomDamageListener implements Listener {
                     }
                 }
             }
-
         }
-
     }
-
 }

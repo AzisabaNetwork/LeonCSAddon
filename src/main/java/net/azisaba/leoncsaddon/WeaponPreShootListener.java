@@ -1,6 +1,6 @@
 package net.azisaba.leoncsaddon;
 
-import com.shampaggon.crackshot.events.WeaponPreShootEvent;
+import net.azisaba.crackshot.events.WeaponPreShootEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

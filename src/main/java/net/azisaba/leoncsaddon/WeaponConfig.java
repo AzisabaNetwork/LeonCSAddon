@@ -1,5 +1,5 @@
 package net.azisaba.leoncsaddon;
-import org.bukkit.Bukkit;
+
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.potion.PotionEffect;
@@ -57,31 +57,30 @@ public class WeaponConfig extends Config{
                         double projectileSizeXZ = configuration.getDouble(key + ".projectileSize.xz",0);
                         double projectileSizeY = configuration.getDouble(key + ".projectileSize.y",0);
                         Integer dualWieldWeaponCMD = (Integer) configuration.get(key + ".dualWieldWeaponCMD", null);
+                        String dualWieldWeaponModel = configuration.getString(key + ".dualWieldWeaponModel", null);
 
                         String[] allyPotion = configuration.getString(key + ".allypotion", "").split(",");
                         List<PotionEffect> potionEffectList = new ArrayList<>();
 
-                        for(int i = 0; i < allyPotion.length; ++i) {
-                            String potFX = allyPotion[i];
+                        for (String s : allyPotion) {
+                            String potFX = s;
                             potFX = potFX.replace(" ", "");
                             String[] args = potFX.split("-");
                             if (args.length == 3) {
                                 try {
-                                    PotionEffectType potionType = PotionEffectType.getByName(args[0].toUpperCase());
-                                    int duration = Integer.parseInt(args[1]);
-                                    if (potionType.getDurationModifier() != 1.0) {
-                                        double maths = (double)duration * (1.0 / potionType.getDurationModifier());
-                                        duration = (int)maths;
+                                    org.bukkit.NamespacedKey keyObj = org.bukkit.NamespacedKey.fromString(args[0].toLowerCase(java.util.Locale.ROOT));
+                                    PotionEffectType potionType = keyObj != null ? org.bukkit.Registry.POTION_EFFECT_TYPE.get(keyObj) : null;
+                                    if (potionType == null) {
+                                        throw new IllegalArgumentException("Unknown potion effect type: " + args[0]);
                                     }
+                                    int duration = Integer.parseInt(args[1]);
                                     potionEffectList.add(potionType.createEffect(duration, Integer.parseInt(args[2]) - 1));
                                 } catch (Exception var15) {
                                     System.out.println("[LeonCSAddon] '" + potFX + "' of weapon '" + key + "' has an incorrect potion type, duration or level!");
                                 }
                             }
                         }
-
-                        weaponsMap.put(key,new WeaponConfigData(key, type, isMain, requirements, damage, headshotBonusDamage, criticalBonusDamage, backstabBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY, dualWieldWeaponCMD, potionEffectList));
-
+                        weaponsMap.put(key,new WeaponConfigData(key, type, isMain, requirements, damage, headshotBonusDamage, criticalBonusDamage, backstabBonusDamage,  guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY, dualWieldWeaponCMD, dualWieldWeaponModel, potionEffectList));
                     });
                 }
             }
@@ -98,7 +97,5 @@ public class WeaponConfig extends Config{
             cache.put(name,data);
             return data;
         }
-
     }
-
 }

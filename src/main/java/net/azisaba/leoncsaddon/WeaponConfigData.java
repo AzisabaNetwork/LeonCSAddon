@@ -28,8 +28,9 @@ public class WeaponConfigData {
     public final double reduceDamage;
 
     public final Integer dualWieldWeaponCMD;
+    public final String dualWieldWeaponModel;
 
-    public WeaponConfigData(String name, List<String> type, boolean isMain, List<String> requirements, double damage, double headshotBonusDamage, double criticalBonusDamage, double backstabBonusDamage, double guardMult, float walkSpeed, boolean canSprint, int reduceStartTick, int reduceEndTick, double reduceDamage, double projectileSizeXZ, double projectileSizeY, Integer dualWieldWeaponCMD, List<PotionEffect> potionEffectList){
+    public WeaponConfigData(String name, List<String> type, boolean isMain, List<String> requirements, double damage, double headshotBonusDamage, double criticalBonusDamage, double backstabBonusDamage, double guardMult, float walkSpeed, boolean canSprint, int reduceStartTick, int reduceEndTick, double reduceDamage, double projectileSizeXZ, double projectileSizeY, Integer dualWieldWeaponCMD, String dualWieldWeaponModel, List<PotionEffect> potionEffectList){
         this.type = type;
         this.isMain = isMain;
         this.requirements = requirements;
@@ -47,7 +48,11 @@ public class WeaponConfigData {
         this.projectileSizeXZ = projectileSizeXZ;
         this.projectileSizeY = projectileSizeY;
         this.dualWieldWeaponCMD = dualWieldWeaponCMD;
+        this.dualWieldWeaponModel = dualWieldWeaponModel;
         this.allyPotion = potionEffectList;
     }
 
+    public WeaponConfigData(String name, List<String> type, boolean isMain, List<String> requirements, double damage, double headshotBonusDamage, double criticalBonusDamage, double backstabBonusDamage, double guardMult, float walkSpeed, boolean canSprint, int reduceStartTick, int reduceEndTick, double reduceDamage, double projectileSizeXZ, double projectileSizeY, Integer dualWieldWeaponCMD, List<PotionEffect> potionEffectList){
+        this(name, type, isMain, requirements, damage, headshotBonusDamage, criticalBonusDamage, backstabBonusDamage, guardMult, walkSpeed, canSprint, reduceStartTick, reduceEndTick, reduceDamage, projectileSizeXZ, projectileSizeY, dualWieldWeaponCMD, null, potionEffectList);
+    }
 }

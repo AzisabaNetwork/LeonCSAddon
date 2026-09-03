@@ -1,7 +1,6 @@
 plugins {
     id("java-library")
     id("maven-publish")
-    id("com.gradleup.shadow") version "8.3.6"
 }
 
 group = "net.azisaba"
@@ -15,6 +14,7 @@ java {
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
+    options.compilerArgs.add("-Xlint:deprecation")
 }
 
 repositories {
@@ -36,16 +36,6 @@ tasks.processResources {
     filteringCharset = "UTF-8"
     filesMatching("plugin.yml") {
         expand(props)
-    }
-}
-
-tasks {
-    shadowJar {
-        archiveClassifier.set("")
-    }
-
-    build {
-        dependsOn(shadowJar)
     }
 }
 

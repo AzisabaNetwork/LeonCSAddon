@@ -1,5 +1,5 @@
 name: LeonCSAddon
-version: "${project.version}"
+version: "${version}"
 main: net.azisaba.leoncsaddon.LeonCSAddon
 api-version: "1.21"
 depend:
