@@ -48,8 +48,8 @@ publishing {
     repositories {
         maven {
             name = "azisaba"
-            val releasesRepoUrl = uri("https://repo.azisaba.net/repository/maven-releases/")
-            val snapshotsRepoUrl = uri("https://repo.azisaba.net/repository/maven-snapshots/")
+            val releasesRepoUrl = uri("https://maven.azisaba.net/repository/maven-releases/")
+            val snapshotsRepoUrl = uri("https://maven.azisaba.net/repository/maven-snapshots/")
             url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
 
             credentials {
